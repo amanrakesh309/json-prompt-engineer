@@ -1,0 +1,5 @@
+
+{
+  "name": "JSON Prompt Engineer",
+  "description": "An application that uses Gemini to convert simple text prompts into structured, detailed JSON prompts, enhancing their effectiveness for AI models."
+}
