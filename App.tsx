@@ -1,10 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { PromptInput } from './components/PromptInput';
 import { JsonOutput } from './components/JsonOutput';
 import { generateJsonPrompt, generateKeywordSuggestions } from './services/geminiService';
 import { RefreshIcon } from './components/icons/RefreshIcon';
 
 export type Complexity = 'Basic' | 'Precise' | 'Advanced';
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
 
 const App: React.FC = () => {
   const [prompt, setPrompt] = useState<string>('');
@@ -63,6 +68,23 @@ const App: React.FC = () => {
     setSuggestionError(null);
   }, []);
 
+    // Initialize AdSense
+  useEffect(() => {
+    // Inject the main script
+    const script = document.createElement('script');
+    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5627548190574205";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    document.head.appendChild(script);
+
+    // Call for each ad unit
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.warn("AdSense init failed:", e);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200 font-sans p-4 sm:p-6 lg:p-8">
@@ -85,8 +107,12 @@ const App: React.FC = () => {
         </header>
 
         {/* --- AD SLOT 1: Top Banner (728x90) --- */}
-        <div className="mb-8 h-[90px] bg-red-900/30 border border-red-700 flex items-center justify-center rounded-lg text-red-400 text-sm font-mono">
-            [ Placeholder Ad Slot: Top Banner (728x90) - Insert Ad Code Here ]
+        {/* Ad Slot 1 */}
+        <div className="mb-8 flex justify-center">
+          <ins className="adsbygoogle"
+               style={{ display: 'inline-block', width: '728px', height: '90px' }}
+               data-ad-client="ca-pub-5627548190574205"
+               data-ad-slot="INSERT_TOP_SLOT_ID"></ins>
         </div>
         {/* ------------------------------------- */}
 
@@ -113,8 +139,13 @@ const App: React.FC = () => {
         </main>
 
         {/* --- AD SLOT 2: Bottom Horizontal Ad (Full Width) --- */}
-        <div className="mt-8 mb-4 h-[90px] bg-red-900/30 border border-red-700 flex items-center justify-center rounded-lg text-red-400 text-sm font-mono">
-            [ Placeholder Ad Slot: Bottom Horizontal Ad (e.g., 970x90) - Insert Ad Code Here ]
+        <div className="mt-8 mb-4 flex justify-center">
+          <ins className="adsbygoogle"
+               style={{ display: 'block' }}
+               data-ad-client="ca-pub-5627548190574205"
+               data-ad-slot="INSERT_BOTTOM_SLOT_ID"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
         </div>
         {/* -------------------------------------------------- */}
 
