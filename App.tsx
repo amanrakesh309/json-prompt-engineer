@@ -5,11 +5,11 @@ import { generateJsonPrompt, generateKeywordSuggestions } from './services/gemin
 import { RefreshIcon } from './components/icons/RefreshIcon';
 
 export type Complexity = 'Basic' | 'Precise' | 'Advanced';
-declare global {
-  interface Window {
-    adsbygoogle: any[];
-  }
-}
+// declare global {
+//   interface Window {
+//     adsbygoogle: any[];
+//   }
+// }
 
 const App: React.FC = () => {
   const [prompt, setPrompt] = useState<string>('');
@@ -69,22 +69,22 @@ const App: React.FC = () => {
   }, []);
 
     // Initialize AdSense
-  useEffect(() => {
-    // Inject the main script
-    const script = document.createElement('script');
-    script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5627548190574205";
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    document.head.appendChild(script);
+  // useEffect(() => {
+  //   // Inject the main script
+  //   const script = document.createElement('script');
+  //   script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5627548190574205";
+  //   script.async = true;
+  //   script.crossOrigin = "anonymous";
+  //   document.head.appendChild(script);
 
-    // Call for each ad unit
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {
-      console.warn("AdSense init failed:", e);
-    }
-  }, []);
+  //   // Call for each ad unit
+  //   try {
+  //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+  //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+  //   } catch (e) {
+  //     console.warn("AdSense init failed:", e);
+  //   }
+  // }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-200 font-sans p-4 sm:p-6 lg:p-8">
@@ -108,12 +108,12 @@ const App: React.FC = () => {
 
         {/* --- AD SLOT 1: Top Banner (728x90) --- */}
         {/* Ad Slot 1 */}
-        <div className="mb-8 flex justify-center">
+        {/* <div className="mb-8 flex justify-center">
           <ins className="adsbygoogle"
                style={{ display: 'inline-block', width: '728px', height: '90px' }}
                data-ad-client="ca-pub-5627548190574205"
                data-ad-slot="INSERT_TOP_SLOT_ID"></ins>
-        </div>
+        </div> */}
         {/* ------------------------------------- */}
 
         <main className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -139,14 +139,14 @@ const App: React.FC = () => {
         </main>
 
         {/* --- AD SLOT 2: Bottom Horizontal Ad (Full Width) --- */}
-        <div className="mt-8 mb-4 flex justify-center">
+        {/* <div className="mt-8 mb-4 flex justify-center">
           <ins className="adsbygoogle"
                style={{ display: 'block' }}
                data-ad-client="ca-pub-5627548190574205"
                data-ad-slot="INSERT_BOTTOM_SLOT_ID"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
-        </div>
+        </div> */}
         {/* -------------------------------------------------- */}
 
         {/* --- NEW NOTICE BOARD & FEEDBACK SECTION --- */}
@@ -177,12 +177,10 @@ const App: React.FC = () => {
 
 
         <footer className="text-center mt-12 text-gray-500 text-sm flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-          {/* <p>Powered by Google Gemini</p>
-          <span className="hidden sm:inline text-gray-600 text-lg">|</span> */}
           <div className="flex items-center space-x-2">
             <p className="text-gray-400">Support the project:</p>
             <a
-              href="https://buymeacoffee.com/amanrakesh046" // ⬅️ IMPORTANT: Replace this with your actual link!
+              href="https://buymeacoffee.com/amanrakesh046" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-900 font-semibold px-3 py-1 rounded-full bg-yellow-400 hover:bg-yellow-300 transition-colors shadow-lg"
